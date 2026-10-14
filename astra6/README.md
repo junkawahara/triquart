@@ -9,7 +9,8 @@ Computing the Triplet and Quartet Distance Between Trees of Arbitrary Degree*
 There are no external dependencies or build system. Working notes
 (`status.md`, `try_and_error.md`) are local files and are not committed.
 
-Compile and run the checks from the repository root:
+Compile and run the checks from this directory (`sh run_checks.sh` runs
+exactly the commands below):
 
 ```sh
 mkdir -p build
