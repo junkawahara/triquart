@@ -200,6 +200,32 @@ the oracle exhaustively on all small trees and on thousands of random
 pairs, and then measure the counter work on trees with up to 10 000
 leaves.
 
+## Cross-implementation comparison
+
+In addition to the per-directory test suites, the two implementations were
+compared directly with each other (run by Claude Code, Claude Sonnet 5.5,
+on 2026-10-14). Both received identical Newick files and the five counts
+A to E were compared for the triplet and the quartet distance. The
+driver and the random-tree generator used for this comparison are throwaway
+scripts and are **not** part of the repository.
+
+| Test | Result |
+|------|--------|
+| About 5,700 random tree pairs, n = 4 to 2,500 leaves; near-binary, mixed-degree, high-degree, caterpillar and star shapes; leaf order shuffled between the trees; quoted labels and branch lengths | A to E identical in every case, 0 mismatches |
+| n = 3,000: caterpillar vs. caterpillar, star vs. caterpillar (both directions) | Identical (quartet counts up to about 3.4e12) |
+| 300 random pairs, n = 4 to 14: `fable5_1` HDT result vs. its own `--naive` oracle | Identical |
+| Edge cases: n = 1, 2, 3; differing leaf sets; duplicate labels | Same counts, or both implementations reject the input (error messages differ) |
+
+Known difference in accepted input: `fable5_1` contracts nodes with a single
+child, whereas `astra6` rejects them (`unary internal nodes are not
+supported`). For the comparison, `astra6` was given the contracted trees;
+the distances agree.
+
+Not covered: trees with 10^5 leaves or more, and counts beyond 64 bits
+(`astra6` uses checked 64-bit arithmetic, `fable5_1` uses 128-bit). Agreement
+between two AI-written implementations is evidence, not proof, of
+correctness; see the note at the top of this file.
+
 ## Benchmark
 
 `fable5_1/tests/bench.cpp` measures the running time on random trees of
