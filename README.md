@@ -3,6 +3,17 @@
 Exact triplet and quartet distances between two phylogenetic trees of
 arbitrary degree, in C++17 with no external dependencies.
 
+> **Important: this repository was generated almost entirely by AI.**
+> The source code, the tests, the test oracles and the documentation in
+> this repository were written by generative AI coding agents (see
+> *Repository layout* below for which agent produced which directory).
+> **No human has reviewed or verified the correctness of the code.** Each
+> implementation was cross-checked by the *other* agent (Astra 6 reviewed
+> `fable5_1/`, Fable 5.1 reviewed `astra6/`), and both pass automated test
+> suites that were also written by AI. That is the only evidence of
+> correctness. Use the results at your own risk and validate them
+> independently before relying on them.
+
 The code implements the algorithms of
 
 > Gerth Stølting Brodal, Rolf Fagerberg and Christian N. S. Pedersen.
@@ -44,16 +55,21 @@ The program reports all five counts together with
 ## Repository layout
 
 The repository contains two independent, self-contained implementations
-of the same paper. They share no code and can be built separately.
+of the same paper, each produced by a different AI coding agent working
+from the paper. They share no code and can be built separately.
 
-| Directory | Contents |
-|-----------|----------|
-| `fable5_1/` | Library plus a command-line tool `soda13`. Built with the included `Makefile`. Totals are 128-bit integers where the compiler provides `__int128`, so quartet counts remain exact beyond n ≈ 123 000. Namespace `soda13`. |
-| `astra6/` | Library with a header-level API and detailed per-run statistics (counter work, number of contractions, all nine resolved/unresolved cases). Compiled directly with `g++`; `astra6/run_checks.sh` builds and runs every test, and `astra6/README.md` documents the API in detail. Namespace `soda2013`. |
+| Directory | Produced by | Verified by | Contents |
+|-----------|-------------|-------------|----------|
+| `fable5_1/` | Claude Code (Claude Fable 5.1) | Codex (Astra 6) | Library plus a command-line tool `soda13`. Built with the included `Makefile`. Totals are 128-bit integers where the compiler provides `__int128`, so quartet counts remain exact beyond n ≈ 123 000. Namespace `soda13`. |
+| `astra6/` | Codex (Astra 6) | Claude Code (Claude Fable 5.1) | Library with a header-level API and detailed per-run statistics (counter work, number of contractions, all nine resolved/unresolved cases). Compiled directly with `g++`; `astra6/run_checks.sh` builds and runs every test, and `astra6/README.md` documents the API in detail. Namespace `soda2013`. |
 
 Both directories carry their own tests, including exhaustive comparison
 against a naive enumeration oracle on all small trees and randomized
-comparison on larger ones.
+comparison on larger ones. The tests and oracles were written by the same
+agent as the implementation they test. As an additional check, the
+correctness of each implementation was then reviewed by the other agent:
+`fable5_1/` by Astra 6 and `astra6/` by Fable 5.1. No human took part in
+either review.
 
 ## Requirements
 
