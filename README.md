@@ -210,3 +210,7 @@ stays proportional to the current subtree. The transcription of the
 paper's counter tables that the code was checked against, including a
 few corrected typos, is kept as a local working note and is not part of
 the repository.
+
+## License
+
+This project is released under the MIT License. See [LICENSE](LICENSE).
